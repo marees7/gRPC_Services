@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package client_stream;
+
+option go_package = "/proto";
+
+service ClientService {
+    rpc UnaryRPC (Request) returns (Response);
+    rpc ClientStreamRPC (stream Request) returns (Response);
+    rpc ServerStreamRPC (Request) returns (stream Response);
+    rpc BidirectionalRPC (stream Request) returns (stream Response);
+}
+
+message Request {
+    string message = 1;
+}
+
+message Response {
+    string message = 1;
+}
